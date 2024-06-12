@@ -1,5 +1,6 @@
 package com.homework.coindesk.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,9 +11,10 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Table
+@Table(name="CURRENCY")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Data
 public class CurrencyEntity {
     @Id

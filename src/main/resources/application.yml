@@ -13,4 +13,4 @@ spring:
 
 
 server:
-  coin-desk-url: {env.coin-desk-url: https://api.coindesk.com/v1/bpi/currentprice.json}
+  coin-desk-url: https://api.coindesk.com/v1/bpi/currentprice.json
