@@ -1,2 +1,15 @@
-package com.homework.coindesk.filter;public class CurrencyFilter {
+package com.homework.coindesk.filter;
+
+import com.homework.coindesk.dto.CurrencyDto;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CurrencyFilter extends CurrencyDto {
+    private boolean isUpdate;
 }

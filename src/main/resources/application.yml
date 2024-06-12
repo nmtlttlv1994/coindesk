@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: coindesk
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: 123456
+    driverClassName: org.h2.Driver
+  h2:
+    console.enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+server:
+  coin-desk-url: {env.coin-desk-url: https://api.coindesk.com/v1/bpi/currentprice.json}
