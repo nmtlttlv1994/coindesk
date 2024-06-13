@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.homework.coindesk.entity.CurrencyEntity;
 
-@Repository
-public interface CurrencyRepository extends JpaRepository<CurrencyEntity, Long>{
+import java.util.List;
+import java.util.Optional;
 
+@Repository
+public interface CurrencyRepository extends JpaRepository<CurrencyEntity, String>{
+    Optional<CurrencyEntity> findByCodeAndActive(String code, boolean active);
+
+    List<CurrencyEntity> findAllByActive(boolean active);
 }
