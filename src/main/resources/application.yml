@@ -8,6 +8,9 @@ spring:
     driverClassName: org.h2.Driver
   h2:
     console.enabled: true
+    console:
+      settings:
+        web-allow-others: true
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
