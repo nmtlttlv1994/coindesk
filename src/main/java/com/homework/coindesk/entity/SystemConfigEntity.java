@@ -1,50 +1,41 @@
 package com.homework.coindesk.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
-@Table(name = "currency", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "code")
-})
+@Table(name = "system_config")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Getter
 @Setter
-public class CurrencyEntity {
-
+public class SystemConfigEntity {
     @Id
-    private String code;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "symbol")
-    private String symbol;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "rate")
-    private String rate;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "rate_float")
-    private Float rateFloat;
+    @Column(name = "language_code")
+    private String languageCode;
 
     @Column(name = "active", nullable = false)
     public Boolean active;
@@ -57,8 +48,9 @@ public class CurrencyEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm:ss")
     public LocalDateTime updatedDate;
 
-    @OneToMany(mappedBy = "currency", cascade = CascadeType.ALL)
-    private Set<SystemConfigEntity> systemConfigs = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "currency_code", referencedColumnName = "code")
+    private CurrencyEntity currency;
 
     @PrePersist
     public void prePersist() {

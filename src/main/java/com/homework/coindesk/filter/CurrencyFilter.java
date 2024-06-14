@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyFilter extends CurrencyDto {
+public class CurrencyFilter extends ApiFilter<CurrencyDto> {
+    private String languageCode;
     private boolean isUpdate;
 }

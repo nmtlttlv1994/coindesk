@@ -19,15 +19,10 @@ spring:
       data-locations: classpath:data.sql
       encoding: utf-8
 springdoc:
-  show-actuator: false
   api-docs:
-    enabled: false
     path: /api-docs
-  cache:
-    disabled: true
-  packagesToScan: com.homework.coindesk.controller
+#  packagesToScan: com.homework.coindesk.controller
   swagger-ui:
-    disable-swagger-default-url: true
     path: /swagger-ui.html
 
 

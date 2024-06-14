@@ -1,7 +1,9 @@
 package com.homework.coindesk.service.impl;
 
+import com.homework.coindesk.CurrencyProjection;
 import com.homework.coindesk.dao.CurrencyDao;
 import com.homework.coindesk.dto.CurrencyDto;
+import com.homework.coindesk.filter.CurrencyFilter;
 import com.homework.coindesk.response.BpiResponse;
 import com.homework.coindesk.service.CurrencyService;
 import lombok.RequiredArgsConstructor;
@@ -50,13 +52,14 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public CurrencyDto getByCode(String code) {
-        return currencyDao.findByCode(code);
+    public CurrencyProjection getByCode(String code, String language) {
+        return currencyDao.findByCode(code, language);
     }
 
     @Override
     @Transactional
-    public CurrencyDto upsertOne(CurrencyDto dto) {
+    public CurrencyDto upsertOne(CurrencyFilter filter) {
+        CurrencyDto dto = filter.getCriteria();
         if (ObjectUtils.isEmpty(dto)) {
             throw new RuntimeException("code_is_required");
         }

@@ -1,13 +1,20 @@
 package com.homework.coindesk;
 
+import com.homework.coindesk.controller.CurrencyController;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class CoindeskApplicationTests {
 
+	@Autowired
+	private CurrencyController controller;
+
 	@Test
-	void contextLoads() {
+	void contextLoads() throws Exception {
+		assertThat(controller).isNotNull();
 	}
 
 }

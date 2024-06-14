@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  coindesk:
+    image: minhthongnguyen/coindesk:homework
+    container_name: coindesk
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    environment:
+      ENV.DATASOURCE.USERNAME: sa
+      ENV.DATASOURCE.PASSWORD: 123456

@@ -1,5 +1,6 @@
 package com.homework.coindesk.dao.impl;
 
+import com.homework.coindesk.CurrencyProjection;
 import com.homework.coindesk.dao.CurrencyDao;
 import com.homework.coindesk.dto.CurrencyDto;
 import com.homework.coindesk.mapper.CurrencyMapper;
@@ -17,6 +18,11 @@ public class CurrencyDaoImpl implements CurrencyDao {
 
     @Autowired
     private CurrencyMapper mapper;
+
+    @Override
+    public CurrencyProjection findByCode(String code, String language) {
+        return repository.findByCodeAndActiveAndLanguage(code, language, Boolean.TRUE).orElse(null);
+    }
 
     @Override
     public CurrencyDto findByCode(String code) {
