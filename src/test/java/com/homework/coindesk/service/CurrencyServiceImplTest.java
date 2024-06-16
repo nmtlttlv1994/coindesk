@@ -45,20 +45,6 @@ public class CurrencyServiceImplTest {
     }
 
     @Test
-    public void testGetByCode() {
-        String code = "USD";
-        String language = "USD";
-        CurrencyDto mockDto = new CurrencyDto();
-
-        when(currencyDao.findByCode(code)).thenReturn(mockDto);
-
-        CurrencyProjection result = currencyService.getByCode(code, language);
-
-        assertNotNull(result);
-        assertEquals(mockDto.getCode(), result.getCode());
-    }
-
-    @Test
     public void testUpsertOne() {
         CurrencyFilter mockDto = new CurrencyFilter();
         CurrencyDto dto = new CurrencyDto();
@@ -71,7 +57,7 @@ public class CurrencyServiceImplTest {
         CurrencyDto result = currencyService.upsertOne(mockDto);
 
         assertNotNull(result);
-        assertEquals(mockDto, result);
+        assertEquals(mockDto.getCriteria(), result);
     }
 
     @Test

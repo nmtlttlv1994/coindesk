@@ -10,3 +10,10 @@ services:
     environment:
       ENV.DATASOURCE.USERNAME: sa
       ENV.DATASOURCE.PASSWORD: 123456
+      ENV.DATASOURCE.CRON-TRIGGER: 0 */5 * * * ?
+    depends_on:
+      - db
+  db:
+    image: "buildo/h2database"
+    ports:
+      - "1521:1521"
